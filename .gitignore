@@ -23,3 +23,7 @@ ENV/
 .vscode/
 .idea/
 KaggleAPI/
+
+# Bot configuration containing secret tokens
+config_bot.json
+
