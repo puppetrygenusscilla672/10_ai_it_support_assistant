@@ -261,10 +261,16 @@ with st.sidebar:
     lang_opt = st.selectbox("🌐 Interface Language / Ngôn ngữ:", ["English", "Tiếng Việt"])
     lang = "en" if lang_opt == "English" else "vi"
     t = UI_LANG[lang]
-    
-    # Theme Selection
-    theme_opt = st.selectbox(t["theme_label"], [t["theme_light"], t["theme_dark"]])
-    theme = "light" if theme_opt == t["theme_light"] else "dark"
+
+    # Theme Selection — persist via session_state so language change doesn't reset it
+    if "theme" not in st.session_state:
+        st.session_state["theme"] = "dark"  # default: dark
+
+    theme_options = [t["theme_dark"], t["theme_light"]]
+    theme_index = 0 if st.session_state["theme"] == "dark" else 1
+    theme_opt = st.selectbox(t["theme_label"], theme_options, index=theme_index)
+    st.session_state["theme"] = "dark" if theme_opt == t["theme_dark"] else "light"
+    theme = st.session_state["theme"]
     
     # Dynamic CSS based on Selected Theme
     if theme == "light":
@@ -292,16 +298,23 @@ with st.sidebar:
             font-family: 'Outfit', sans-serif;
             {f'color: {text_color} !important;' if theme == 'dark' else ''}
         }}
-        
-        /* Background and glassmorphism styling */
-        .main, .stApp {{
+
+        /* ── Main background (override Streamlit Cloud default) ── */
+        .stApp, .stApp > header, section.main, section.main > div, .block-container {{
             background: {main_bg} !important;
         }}
-        
-        [data-testid="stSidebar"] {{
+
+        /* ── Sidebar background ── */
+        [data-testid="stSidebar"],
+        [data-testid="stSidebar"] > div:first-child,
+        [data-testid="stSidebarContent"] {{
             background: {sidebar_bg} !important;
         }}
-        
+        /* Sidebar text color */
+        [data-testid="stSidebar"] * {{
+            color: {text_color};
+        }}
+
         /* Elegant Header Banner */
         .header-banner {{
             background: {header_bg};
