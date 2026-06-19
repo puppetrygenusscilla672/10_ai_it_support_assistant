@@ -513,6 +513,30 @@ Working PowerShell (Windows) or Bash (Linux) script in triple backticks with lan
 **4. PREVENTION RECOMMENDATION**
 1-2 sentences on preventing recurrence.
 
+### few_shot_examples
+Here is an example of the expected output format:
+
+**1. TRIAGE**
+- Predicted Category: Network & Internet
+- Suggested Priority: High
+- Root Cause Hypothesis: The DNS client cache is corrupted or DNS resolution is failing.
+
+**2. TROUBLESHOOTING CHECKLIST**
+1. Check the network adapter IP configuration.
+2. Flush the local DNS resolver cache.
+3. Verify connection to external gateway.
+
+**3. AUTOMATED RECOVERY SCRIPT**
+```powershell
+# Flush DNS resolver cache
+Clear-DnsClientCache
+# Restart the Network Connections service
+Restart-Service -Name "ncbsrv" -Force
+```
+
+**4. PREVENTION RECOMMENDATION**
+Configure secondary DNS servers (like 8.8.8.8) to ensure failover capability.
+
 ### language_instruction
 {lang_instruction}
 
